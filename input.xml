@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<p7:reserve
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xmlns:p7="http://nure.ua/your_last_name/practice7"
-        xsi:schemaLocation="http://nure.ua/your_last_name/practice7 input.xsd">
+<reserve>
     <gem>
         <nameGem>Izumrud</nameGem>
         <origin>Mandalor</origin>
@@ -27,4 +24,4 @@
             <countOfFaces>6</countOfFaces>
         </visualParameters>
     </gem>
-</p7:reserve>
+</reserve>
