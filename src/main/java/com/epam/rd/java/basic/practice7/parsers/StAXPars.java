@@ -38,7 +38,7 @@ public class StAXPars {
         }
     }
 
-    StAXPars(String nameInputFile) {
+    public StAXPars(String nameInputFile) {
         this.nameInputFile = nameInputFile;
     }
 

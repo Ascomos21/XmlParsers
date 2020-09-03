@@ -23,9 +23,10 @@ public class DOMPars {
     private Reserve reserve;
     String nameInputFile;
 
-    DOMPars(String nameInputFile) {
+    public DOMPars(String nameInputFile) {
         this.nameInputFile = nameInputFile;
     }
+
     public static void main(String[] args) {
         DOMPars pars = new DOMPars(args[0]);
         pars.parse(pars.nameInputFile);

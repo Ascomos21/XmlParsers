@@ -20,7 +20,7 @@ public class SAXPars extends DefaultHandler {
     private Reserve reserve;
     String nameInputFile;
 
-    SAXPars(String nameInputFile) {
+    public SAXPars(String nameInputFile) {
         this.nameInputFile = nameInputFile;
     }
 
