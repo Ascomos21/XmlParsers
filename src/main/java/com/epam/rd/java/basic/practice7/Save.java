@@ -8,8 +8,12 @@ import javax.xml.bind.Marshaller;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.StringWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Save {
+    private final Logger logger = Logger.getLogger(Save.class.getName());
+
     public void saveToXML(Reserve reserve, String nameFile)
             throws JAXBException {
         // Test -> DOM -> XML
@@ -36,8 +40,7 @@ public class Save {
         try (FileWriter writer = new FileWriter(nameFile)) {
             writer.write(stringWriter.toString());
         } catch (IOException e) {
-            System.out.println("An error occurred.");
-            e.printStackTrace();
+            logger.log(Level.WARNING, e.getMessage());
         }
     }
 }

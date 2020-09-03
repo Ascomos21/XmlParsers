@@ -15,8 +15,11 @@ import javax.xml.stream.events.XMLEvent;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.Collections;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class StAXPars {
+    private final Logger logger = Logger.getLogger(StAXPars.class.getName());
     private Reserve reserve;
     String nameGem;
     String origin;
@@ -34,7 +37,7 @@ public class StAXPars {
         try {
             save.saveToXML(stAXPars.reserve, "output.stax.xml");
         } catch (JAXBException e) {
-            e.printStackTrace();
+            stAXPars.logger.log(Level.WARNING, e.getMessage());
         }
     }
 
@@ -46,6 +49,7 @@ public class StAXPars {
         reserve = new Reserve();
         try {
             XMLInputFactory factory = XMLInputFactory.newInstance();
+            factory.setProperty("javax.xml.stream.isSupportingExternalEntities", false);
             XMLEventReader eventReader =
                     factory.createXMLEventReader(new FileReader(nameInputFile));
 
@@ -72,6 +76,8 @@ public class StAXPars {
                             countOfFaces = Integer.valueOf(event.asCharacters().getData());
                             reserve.getGemList().add(new Gem(nameGem, origin, new VisualParameters(color, countOfFaces)));
                             break;
+                        default:
+                            // will NOT execute because of the line preceding the switch.
                     }
                 }
 
@@ -79,7 +85,7 @@ public class StAXPars {
             System.out.println(reserve.getGemList().toString());
 
         } catch (FileNotFoundException | XMLStreamException e) {
-            e.printStackTrace();
+            logger.log(Level.WARNING, e.getMessage());
         }
     }
 }

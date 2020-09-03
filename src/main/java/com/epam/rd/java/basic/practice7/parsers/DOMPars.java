@@ -11,6 +11,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import javax.xml.XMLConstants;
 import javax.xml.bind.JAXBException;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -18,8 +19,11 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.IOException;
 import java.util.Collections;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class DOMPars {
+    private final Logger logger = Logger.getLogger(DOMPars.class.getName());
     private Reserve reserve;
     String nameInputFile;
 
@@ -38,7 +42,7 @@ public class DOMPars {
         try {
             save.saveToXML(pars.reserve, "output.dom.xml");
         } catch (JAXBException e) {
-            e.printStackTrace();
+            pars.logger.log(Level.WARNING, e.getMessage());
         }
 
     }
@@ -47,6 +51,9 @@ public class DOMPars {
 
         File file = new File(nameFile);
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        factory.setAttribute(XMLConstants.FEATURE_SECURE_PROCESSING, true);
+        factory.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
+        factory.setAttribute(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
         reserve = new Reserve();
         try {
             DocumentBuilder builder = factory.newDocumentBuilder();
@@ -61,7 +68,7 @@ public class DOMPars {
                     String nameGem = element.getElementsByTagName("nameGem").item(0).getTextContent();
                     String origin = element.getElementsByTagName("origin").item(0).getTextContent();
                     String color = element.getElementsByTagName("color").item(0).getTextContent();
-                    int countOfFaces = Integer.valueOf(element.getElementsByTagName("countOfFaces").item(0).getTextContent());
+                    int countOfFaces = Integer.parseInt(element.getElementsByTagName("countOfFaces").item(0).getTextContent());
                     Gem gem = new Gem(nameGem, origin, new VisualParameters(color, countOfFaces));
                     System.out.println(gem);
                     reserve.getGemList().add(gem);
@@ -69,7 +76,7 @@ public class DOMPars {
             }
             System.out.println(reserve.getGemList());
         } catch (ParserConfigurationException | SAXException | IOException e) {
-            e.printStackTrace();
+            logger.log(Level.WARNING, e.getMessage());
         }
     }
 }

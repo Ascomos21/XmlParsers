@@ -15,8 +15,11 @@ import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import java.io.IOException;
 import java.util.Collections;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class SAXPars extends DefaultHandler {
+    private final Logger logger = Logger.getLogger(SAXPars.class.getName());
     private Reserve reserve;
     String nameInputFile;
 
@@ -28,12 +31,8 @@ public class SAXPars extends DefaultHandler {
         SAXPars saxPars = new SAXPars(args[0]);
         try {
             saxPars.parse();
-        } catch (ParserConfigurationException e) {
-            e.printStackTrace();
-        } catch (SAXException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (ParserConfigurationException | SAXException | IOException e) {
+            saxPars.logger.log(Level.WARNING, e.getMessage());
         }
 
         System.out.println("BEFORE SORT" + saxPars.getReserve().getGemList().toString());
@@ -44,7 +43,7 @@ public class SAXPars extends DefaultHandler {
 
             save.saveToXML(saxPars.reserve, "output.sax.xml");
         } catch (JAXBException e) {
-            e.printStackTrace();
+            saxPars.logger.log(Level.WARNING, e.getMessage());
         }
 
     }
@@ -55,7 +54,9 @@ public class SAXPars extends DefaultHandler {
 
     public void parse() throws ParserConfigurationException, SAXException, IOException {
         SAXParserFactory factory = SAXParserFactory.newInstance();
-
+        factory.setFeature("http://xml.org/sax/features/external-general-entities", false);
+        factory.setFeature("http://xml.org/sax/features/external-parameter-entities", false);
+        factory.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
         // XML document contains namespaces
         factory.setNamespaceAware(true);
         // set validation
@@ -67,7 +68,6 @@ public class SAXPars extends DefaultHandler {
     private String nameGem;
     private String originGem;
     private String visualParametersColorGem;
-    private int visualParametersCountOfFacesGem;
 
     private boolean name = false;
     private boolean origin = false;
@@ -106,6 +106,7 @@ public class SAXPars extends DefaultHandler {
 
     @Override
     public void characters(char ch[], int start, int length) {
+        int visualParametersCountOfFacesGem;
 
         if (name) {
             nameGem = new String(ch, start, length);
