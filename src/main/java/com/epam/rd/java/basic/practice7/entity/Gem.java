@@ -78,36 +78,10 @@ public class Gem {
      * @param value allowed object is
      *              {@link String }
      */
-   // @XmlElement(name = "nameGem")
     public void setNameGem(String value) {
         this.nameGem = value;
     }
 
-    /**
-     * Gets the value of the preciousness property.
-     *
-     * @return
-     *     possible object is
-     *     {@link Object }
-     *
-     */
-   /* public Object getPreciousness() {
-        return preciousness;
-    }
-
-    *//**
-     * Sets the value of the preciousness property.
-     *
-     * @param value
-     *     allowed object is
-     *     {@link Object }
-     *
-     *//*
-    public void setPreciousness(Object value) {
-        this.preciousness = value;
-    }
-
-    */
 
     /**
      * Gets the value of the origin property.
@@ -126,7 +100,6 @@ public class Gem {
      *              {@link String }
      */
 
-  //  @XmlElement(name = "origin")
     public void setOrigin(String value) {
         this.origin = value;
     }
@@ -147,7 +120,6 @@ public class Gem {
      * @param value allowed object is
      *              {@link String }
      */
-   // @XmlElement(name = "visualParameters")
     public void setVisualParameters(VisualParameters value) {
         this.visualParameters = value;
     }

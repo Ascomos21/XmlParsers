@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           targetNamespace="http://www.cmu.edu/ns/blank">
+           targetNamespace="http://www.cmu.edu/ns/blank"
+           xmlns:tns="http://www.cmu.edu/ns/blank">
     <xs:element name="reserve">
         <xs:complexType>
             <xs:sequence>
@@ -10,7 +11,7 @@
                             <xs:element type="xs:string" name="nameGem"/>
                             <!-- <xs:element name="preciousness" type="preciousness"/>-->
                             <xs:element type="xs:string" name="origin"/>
-                            <xs:element name="visualParameters" type="visualParameters"/>
+                            <xs:element name="visualParameters" type="tns:visualParameters"/>
                             <xs:element type="xs:byte" name="value"/>
                         </xs:sequence>
                     </xs:complexType>

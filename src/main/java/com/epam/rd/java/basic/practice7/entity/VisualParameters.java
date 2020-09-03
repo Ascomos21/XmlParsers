@@ -47,14 +47,9 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;/complexType>
  * </pre>
  */
-//@XmlAccessorType(XmlAccessType.FIELD)
-/*@XmlType(name = "visualParameters", propOrder = {
-        "color",
-        "countOfFaces"
-})*/
+
 public class VisualParameters {
 
-  //  @XmlElement(required = true)
     protected String color;
     protected int countOfFaces;
 
