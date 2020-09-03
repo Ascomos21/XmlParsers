@@ -20,14 +20,6 @@
         </visualParameters>
     </gem>
     <gem>
-        <nameGem>Izumrud</nameGem>
-        <origin>Mandalor</origin>
-        <visualParameters>
-            <color>Green</color>
-            <countOfFaces>8</countOfFaces>
-        </visualParameters>
-    </gem>
-    <gem>
         <nameGem>Diamond</nameGem>
         <origin>Tatuin</origin>
         <visualParameters>

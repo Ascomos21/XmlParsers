@@ -9,10 +9,18 @@
         </visualParameters>
     </gem>
     <gem>
+        <nameGem>Zhemchug</nameGem>
+        <origin>Konoha</origin>
+        <visualParameters>
+            <color>Yellow</color>
+            <countOfFaces>8</countOfFaces>
+        </visualParameters>
+    </gem>
+    <gem>
         <nameGem>Diamond</nameGem>
         <origin>Tatuin</origin>
         <visualParameters>
-            <color>yellow</color>
+            <color>Yellow</color>
             <countOfFaces>6</countOfFaces>
         </visualParameters>
     </gem>

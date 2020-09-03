@@ -22,7 +22,7 @@ public class SAXPars extends DefaultHandler {
     }
 
     public static void main(String[] args) {
-        SAXPars saxPars = new SAXPars("input.xml");
+        SAXPars saxPars = new SAXPars(args[0]);
         try {
             saxPars.parse();
         } catch (ParserConfigurationException e) {
