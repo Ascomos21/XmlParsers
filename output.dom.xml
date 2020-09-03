@@ -21,7 +21,7 @@
         <origin>Konoha</origin>
         <visualParameters>
             <color>Yellow</color>
-            <countOfFaces>8</countOfFaces>
+            <countOfFaces>5</countOfFaces>
         </visualParameters>
     </gem>
 </reserve>

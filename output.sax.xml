@@ -1,19 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <reserve>
     <gem>
-        <nameGem>Izumrud</nameGem>
-        <origin>Mandalor</origin>
-        <visualParameters>
-            <color>Green</color>
-            <countOfFaces>8</countOfFaces>
-        </visualParameters>
-    </gem>
-    <gem>
         <nameGem>Zhemchug</nameGem>
         <origin>Konoha</origin>
         <visualParameters>
             <color>Yellow</color>
-            <countOfFaces>8</countOfFaces>
+            <countOfFaces>5</countOfFaces>
         </visualParameters>
     </gem>
     <gem>
@@ -22,6 +14,14 @@
         <visualParameters>
             <color>Yellow</color>
             <countOfFaces>6</countOfFaces>
+        </visualParameters>
+    </gem>
+    <gem>
+        <nameGem>Izumrud</nameGem>
+        <origin>Mandalor</origin>
+        <visualParameters>
+            <color>Green</color>
+            <countOfFaces>8</countOfFaces>
         </visualParameters>
     </gem>
 </reserve>

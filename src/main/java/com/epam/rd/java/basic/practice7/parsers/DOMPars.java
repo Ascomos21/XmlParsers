@@ -1,5 +1,7 @@
-package com.epam.rd.java.basic.practice7;
+package com.epam.rd.java.basic.practice7.parsers;
 
+import com.epam.rd.java.basic.practice7.Save;
+import com.epam.rd.java.basic.practice7.Sorter;
 import com.epam.rd.java.basic.practice7.entity.Gem;
 import com.epam.rd.java.basic.practice7.entity.Reserve;
 import com.epam.rd.java.basic.practice7.entity.VisualParameters;
@@ -29,7 +31,7 @@ public class DOMPars {
         pars.parse(pars.nameInputFile);
         System.out.println("BEFORE SOORt" + pars.reserve.getGemList());
 
-        Collections.sort(pars.reserve.getGemList(), Sorter.SORT_QUESTIONS_BY_QUESTION_TEXT);
+        Collections.sort(pars.reserve.getGemList(), Sorter.SORT_GEM_BY_NAME);
         Save save = new Save();
         System.out.println("AFTER SORT" + pars.reserve.getGemList());
         try {

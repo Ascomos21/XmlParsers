@@ -1,5 +1,7 @@
-package com.epam.rd.java.basic.practice7;
+package com.epam.rd.java.basic.practice7.parsers;
 
+import com.epam.rd.java.basic.practice7.Save;
+import com.epam.rd.java.basic.practice7.Sorter;
 import com.epam.rd.java.basic.practice7.entity.Gem;
 import com.epam.rd.java.basic.practice7.entity.Reserve;
 import com.epam.rd.java.basic.practice7.entity.VisualParameters;
@@ -12,6 +14,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import java.io.IOException;
+import java.util.Collections;
 
 public class SAXPars extends DefaultHandler {
     private Reserve reserve;
@@ -33,7 +36,9 @@ public class SAXPars extends DefaultHandler {
             e.printStackTrace();
         }
 
-        System.out.println(saxPars.getReserve().getGemList().toString());
+        System.out.println("BEFORE SORT" + saxPars.getReserve().getGemList().toString());
+        Collections.sort(saxPars.getReserve().getGemList(), Sorter.SORT_GEM_BY_COUNT_OF_FACES);
+        System.out.println("AFTER SORT" + saxPars.getReserve().getGemList());
         try {
             Save save = new Save();
 

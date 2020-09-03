@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <p7:reserve
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xmlns:p7="http://nure.ua/your_last_name/practice7"
@@ -16,7 +16,7 @@
         <origin>Konoha</origin>
         <visualParameters>
             <color>Yellow</color>
-            <countOfFaces>8</countOfFaces>
+            <countOfFaces>5</countOfFaces>
         </visualParameters>
     </gem>
     <gem>

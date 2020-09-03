@@ -25,7 +25,6 @@ import javax.xml.bind.annotation.*;
  *         &lt;element name="preciousness" type="{http://www.w3.org/2001/XMLSchema}anyType"/>
  *         &lt;element name="origin" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="visualParameters" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="value" type="{http://www.w3.org/2001/XMLSchema}byte"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
