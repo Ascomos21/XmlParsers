@@ -19,10 +19,14 @@ import java.util.Collections;
 
 public class DOMPars {
     private Reserve reserve;
+    String nameInputFile;
 
+    DOMPars(String nameInputFile) {
+        this.nameInputFile = nameInputFile;
+    }
     public static void main(String[] args) {
-        DOMPars pars = new DOMPars();
-        pars.parse();
+        DOMPars pars = new DOMPars(args[0]);
+        pars.parse(pars.nameInputFile);
         System.out.println("BEFORE SOORt" + pars.reserve.getGemList());
 
         Collections.sort(pars.reserve.getGemList(), Sorter.SORT_QUESTIONS_BY_QUESTION_TEXT);
@@ -36,9 +40,9 @@ public class DOMPars {
 
     }
 
-    public void parse() {
+    public void parse(String nameFile) {
 
-        File file = new File("input.xml");
+        File file = new File(nameFile);
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         reserve = new Reserve();
         try {

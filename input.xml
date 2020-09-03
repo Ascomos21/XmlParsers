@@ -1,5 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<reserve>
+<p7:reserve
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:p7="http://nure.ua/your_last_name/practice7"
+        xsi:schemaLocation="http://nure.ua/your_last_name/practice7 input.xsd">
+    <gem>
+        <nameGem>Izumrud</nameGem>
+        <origin>Mandalor</origin>
+        <visualParameters>
+            <color>Green</color>
+            <countOfFaces>8</countOfFaces>
+        </visualParameters>
+    </gem>
+    <gem>
+        <nameGem>Zhemchug</nameGem>
+        <origin>Konoha</origin>
+        <visualParameters>
+            <color>Yellow</color>
+            <countOfFaces>8</countOfFaces>
+        </visualParameters>
+    </gem>
     <gem>
         <nameGem>Izumrud</nameGem>
         <origin>Mandalor</origin>
@@ -12,8 +31,8 @@
         <nameGem>Diamond</nameGem>
         <origin>Tatuin</origin>
         <visualParameters>
-            <color>yellow</color>
+            <color>Yellow</color>
             <countOfFaces>6</countOfFaces>
         </visualParameters>
     </gem>
-</reserve>
+</p7:reserve>
