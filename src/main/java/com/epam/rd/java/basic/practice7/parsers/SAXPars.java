@@ -81,21 +81,12 @@ public class SAXPars extends DefaultHandler {
         if (qName.equalsIgnoreCase("origin")) {
             origin = true;
         }
-
         if (qName.equalsIgnoreCase("color")) {
             visualParametersColor = true;
         }
         if (qName.equalsIgnoreCase("countOfFaces")) {
             visualParametersCountOfFaces = true;
         }
-    }
-
-    @Override
-    public void endElement(String uri, String localName,
-                           String qName) {
-        if (name)
-            System.out.println("End Element :" + qName);
-
     }
 
     @Override
@@ -106,12 +97,10 @@ public class SAXPars extends DefaultHandler {
             nameGem = new String(ch, start, length);
             name = false;
         }
-
         if (origin) {
             originGem = new String(ch, start, length);
             origin = false;
         }
-
         if (visualParametersColor) {
             visualParametersColorGem = new String(ch, start, length);
             visualParametersColor = false;
@@ -122,6 +111,4 @@ public class SAXPars extends DefaultHandler {
             reserve.getGemList().add(new Gem(nameGem, originGem, new VisualParameters(visualParametersColorGem, visualParametersCountOfFacesGem)));
         }
     }
-
-
 }

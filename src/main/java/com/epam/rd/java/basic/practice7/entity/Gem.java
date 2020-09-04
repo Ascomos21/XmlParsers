@@ -72,17 +72,6 @@ public class Gem {
     }
 
     /**
-     * Sets the value of the nameGem property.
-     *
-     * @param value allowed object is
-     *              {@link String }
-     */
-    public void setNameGem(String value) {
-        this.nameGem = value;
-    }
-
-
-    /**
      * Gets the value of the origin property.
      *
      * @return possible object is
@@ -92,16 +81,6 @@ public class Gem {
         return origin;
     }
 
-    /**
-     * Sets the value of the origin property.
-     *
-     * @param value allowed object is
-     *              {@link String }
-     */
-
-    public void setOrigin(String value) {
-        this.origin = value;
-    }
 
     /**
      * Gets the value of the visualParameters property.
@@ -113,15 +92,6 @@ public class Gem {
         return visualParameters;
     }
 
-    /**
-     * Sets the value of the visualParameters property.
-     *
-     * @param value allowed object is
-     *              {@link String }
-     */
-    public void setVisualParameters(VisualParameters value) {
-        this.visualParameters = value;
-    }
 
     @Override
     public String toString() {
