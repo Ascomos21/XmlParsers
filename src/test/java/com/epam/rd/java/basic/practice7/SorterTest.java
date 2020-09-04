@@ -1,6 +1,7 @@
 package com.epam.rd.java.basic.practice7;
 
 import com.epam.rd.java.basic.practice7.entity.Gem;
+import com.epam.rd.java.basic.practice7.entity.Reserve;
 import com.epam.rd.java.basic.practice7.entity.VisualParameters;
 import org.junit.Assert;
 import org.junit.Test;
@@ -30,8 +31,10 @@ public class SorterTest {
     public void testSortingByCountOfFaces() {
         System.out.println("list before sorting" + gemArrayList);
         Collections.sort(gemArrayList, Sorter.SORT_GEM_BY_COUNT_OF_FACES);
+        Reserve reserve = new Reserve();
+        reserve.setGemList(gemArrayList);
         System.out.println("list after sorting" + gemArrayList);
-        Assert.assertEquals(Stream.of(gem1, gem3, gem2).collect(Collectors.toList()), gemArrayList);
+        Assert.assertEquals(Stream.of(gem1, gem3, gem2).collect(Collectors.toList()), reserve.getGemList());
     }
 
     @Test

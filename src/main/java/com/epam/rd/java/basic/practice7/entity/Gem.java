@@ -71,6 +71,10 @@ public class Gem {
         return nameGem;
     }
 
+    public void setNameGem(String nameGem) {
+        this.nameGem = nameGem;
+    }
+
     /**
      * Gets the value of the origin property.
      *
@@ -81,6 +85,9 @@ public class Gem {
         return origin;
     }
 
+    public void setOrigin(String origin) {
+        this.origin = origin;
+    }
 
     /**
      * Gets the value of the visualParameters property.
@@ -92,6 +99,9 @@ public class Gem {
         return visualParameters;
     }
 
+    public void setVisualParameters(VisualParameters visualParameters) {
+        this.visualParameters = visualParameters;
+    }
 
     @Override
     public String toString() {

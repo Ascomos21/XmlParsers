@@ -21,24 +21,30 @@ import java.util.logging.Logger;
 public class StAXPars {
     private final Logger logger = Logger.getLogger(StAXPars.class.getName());
     private Reserve reserve;
-    String nameGem;
-    String origin;
-    String color;
-    int countOfFaces;
-    String nameInputFile;
+    private String nameGem;
+    private String origin;
+    private String color;
+    private int countOfFaces;
+    private String nameInputFile;
 
     public static void main(String[] args) {
-        StAXPars stAXPars = new StAXPars(args[0]);
+        informationToXml(args[0]);
+    }
+
+    public static String informationToXml(String nameFile) {
+        StAXPars stAXPars = new StAXPars(nameFile);
         stAXPars.parse();
+        String result = "";
         System.out.println("BEFORE SORT" + stAXPars.reserve.getGemList());
         Collections.sort(stAXPars.reserve.getGemList(), Sorter.SORT_GEM_BY_ORIGIN);
         System.out.println("AFTER SORT" + stAXPars.reserve.getGemList());
         Save save = new Save();
         try {
-            System.out.println(save.saveToXML(stAXPars.reserve, "output.stax.xml"));
+            result = save.saveToXML(stAXPars.reserve, "output.stax.xml");
         } catch (JAXBException e) {
             stAXPars.logger.log(Level.WARNING, e.getMessage());
         }
+        return result;
     }
 
     public StAXPars(String nameInputFile) {

@@ -21,19 +21,13 @@ public class XmlToHtml {
 
     public void convert() {
         String outputFileName = "report.html";
-        try (OutputStream htmlFile = new FileOutputStream(outputFileName);){
+        try (OutputStream htmlFile = new FileOutputStream(outputFileName);) {
             TransformerFactory tFactory = TransformerFactory.newInstance();
             tFactory.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
             tFactory.setAttribute(XMLConstants.ACCESS_EXTERNAL_STYLESHEET, "");
             Source xslDoc = new StreamSource("stylesheet.xsl");
-
             Source xmlDoc = new StreamSource("input.xml");
-
-
-
-
             Transformer trasform = tFactory.newTransformer(xslDoc);
-
             trasform.transform(xmlDoc, new StreamResult(htmlFile));
 
         } catch (Exception e) {

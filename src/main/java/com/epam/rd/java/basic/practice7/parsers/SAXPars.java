@@ -23,25 +23,26 @@ public class SAXPars extends DefaultHandler {
     private final Logger logger = Logger.getLogger(SAXPars.class.getName());
     private Reserve reserve;
     String nameInputFile;
-
     public SAXPars(String nameInputFile) {
         this.nameInputFile = nameInputFile;
     }
 
     public static void main(String[] args) {
-        SAXPars saxPars = new SAXPars(args[0]);
+        System.out.println(informationInXml(args[0]));
+    }
+
+    public static String informationInXml(String nameFile) {
+        String result = "";
+        SAXPars saxPars = new SAXPars(nameFile);
         saxPars.parse();
-        System.out.println("BEFORE SORT" + saxPars.reserve.getGemList().toString());
         Collections.sort(saxPars.reserve.getGemList(), Sorter.SORT_GEM_BY_COUNT_OF_FACES);
-        System.out.println("AFTER SORT" + saxPars.reserve.getGemList());
         try {
             Save save = new Save();
-
-            System.out.println(save.saveToXML(saxPars.reserve, "output.sax.xml"));
+            result = save.saveToXML(saxPars.reserve, "output.sax.xml");
         } catch (JAXBException e) {
             saxPars.logger.log(Level.WARNING, e.getMessage());
         }
-
+        return result;
     }
 
     public String parse() {

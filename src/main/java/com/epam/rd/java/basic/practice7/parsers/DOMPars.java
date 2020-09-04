@@ -32,19 +32,23 @@ public class DOMPars {
     }
 
     public static void main(String[] args) {
-        DOMPars pars = new DOMPars(args[0]);
+        System.out.println(informationToXml(args[0]));
+    }
+
+    public static String informationToXml(String nameFile) {
+        DOMPars pars = new DOMPars(nameFile);
         pars.parse();
         System.out.println("BEFORE SOORt" + pars.reserve.getGemList());
-
+        String output = "";
         Collections.sort(pars.reserve.getGemList(), Sorter.SORT_GEM_BY_NAME);
         Save save = new Save();
         System.out.println("AFTER SORT" + pars.reserve.getGemList());
         try {
-            System.out.println(save.saveToXML(pars.reserve, "output.dom.xml"));
+            output = save.saveToXML(pars.reserve, "output.dom.xml");
         } catch (JAXBException e) {
             pars.logger.log(Level.WARNING, e.getMessage());
         }
-
+        return output;
     }
 
     public String parse() {

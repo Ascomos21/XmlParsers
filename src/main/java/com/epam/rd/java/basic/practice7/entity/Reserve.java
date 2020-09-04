@@ -29,10 +29,8 @@ import java.util.List;
  *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *                 &lt;sequence>
  *                   &lt;element name="nameGem" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *                   &lt;element name="preciousness" type="{http://www.w3.org/2001/XMLSchema}anyType"/>
  *                   &lt;element name="origin" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *                   &lt;element name="visualParameters" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *                   &lt;element name="value" type="{http://www.w3.org/2001/XMLSchema}byte"/>
  *                 &lt;/sequence>
  *               &lt;/restriction>
  *             &lt;/complexContent>
@@ -53,7 +51,6 @@ public class Reserve {
      * @return possible object is
      * {@link Gem }
      */
-
     private List<Gem> gemList;
     @XmlElement(name = "gem")
     public void setGemList(List<Gem> gemList) {
@@ -65,27 +62,4 @@ public class Reserve {
         }
         return gemList;
     }
-    /**
-     * <p>Java class for anonymous complex type.
-     *
-     * <p>The following schema fragment specifies the expected content contained within this class.
-     *
-     * <pre>
-     * &lt;complexType>
-     *   &lt;complexContent>
-     *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
-     *       &lt;sequence>
-     *         &lt;element name="nameGem" type="{http://www.w3.org/2001/XMLSchema}string"/>
-     *         &lt;element name="preciousness" type="{http://www.w3.org/2001/XMLSchema}anyType"/>
-     *         &lt;element name="origin" type="{http://www.w3.org/2001/XMLSchema}string"/>
-     *         &lt;element name="visualParameters" type="{http://www.w3.org/2001/XMLSchema}string"/>
-     *         &lt;element name="value" type="{http://www.w3.org/2001/XMLSchema}byte"/>
-     *       &lt;/sequence>
-     *     &lt;/restriction>
-     *   &lt;/complexContent>
-     * &lt;/complexType>
-     * </pre>
-     *
-     *
-     */
 }
