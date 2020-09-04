@@ -31,9 +31,9 @@ public class SAXPars extends DefaultHandler {
     public static void main(String[] args) {
         SAXPars saxPars = new SAXPars(args[0]);
         saxPars.parse();
-        System.out.println("BEFORE SORT" + saxPars.getReserve().getGemList().toString());
-        Collections.sort(saxPars.getReserve().getGemList(), Sorter.SORT_GEM_BY_COUNT_OF_FACES);
-        System.out.println("AFTER SORT" + saxPars.getReserve().getGemList());
+        System.out.println("BEFORE SORT" + saxPars.reserve.getGemList().toString());
+        Collections.sort(saxPars.reserve.getGemList(), Sorter.SORT_GEM_BY_COUNT_OF_FACES);
+        System.out.println("AFTER SORT" + saxPars.reserve.getGemList());
         try {
             Save save = new Save();
 
@@ -44,15 +44,12 @@ public class SAXPars extends DefaultHandler {
 
     }
 
-    public Reserve getReserve() {
-        return reserve;
-    }
-
     public String parse() {
-        SAXParserFactory factory = SAXParserFactory.newInstance();
         try {
+            SAXParserFactory factory = SAXParserFactory.newInstance();
             factory.setNamespaceAware(true);
             SAXParser parser = factory.newSAXParser();
+            factory.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
             parser.setProperty(XMLConstants.ACCESS_EXTERNAL_DTD, ""); // Compliant
             parser.setProperty(XMLConstants.ACCESS_EXTERNAL_SCHEMA, ""); // compliant
             parser.parse(nameInputFile, this);
@@ -61,7 +58,6 @@ public class SAXPars extends DefaultHandler {
         }
         return reserve.getGemList().toString();
     }
-
 
     private String nameGem;
     private String originGem;

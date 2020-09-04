@@ -11,6 +11,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import javax.xml.XMLConstants;
 import javax.xml.bind.JAXBException;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -47,28 +48,16 @@ public class DOMPars {
     }
 
     public String parse() {
-        String feature;
+        reserve = new Reserve();
+
         String parsingGems = null;
         File file = new File(nameInputFile);
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-        feature = "http://apache.org/xml/features/disallow-doctype-decl";
+        factory.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, ""); // Compliant
+        factory.setAttribute(XMLConstants.ACCESS_EXTERNAL_SCHEMA, ""); // compliant
         try {
-            factory.setFeature(feature, true);
-            feature = "http://xml.org/sax/features/external-general-entities";
-            factory.setFeature(feature, false);
-
-            feature = "http://xml.org/sax/features/external-parameter-entities";
-            factory.setFeature(feature, false);
-
-            feature = "http://apache.org/xml/features/nonvalidating/load-external-dtd";
-            factory.setFeature(feature, false);
-        } catch (ParserConfigurationException e) {
-            logger.log(Level.WARNING, e.getMessage());
-        }
-
-
-        reserve = new Reserve();
-        try {
+            factory.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
+            factory.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
             DocumentBuilder builder = factory.newDocumentBuilder();
             Document document = builder.parse(file);
             NodeList nodeList = document.getElementsByTagName("gem");
