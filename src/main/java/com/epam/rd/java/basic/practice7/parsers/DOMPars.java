@@ -11,7 +11,6 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import javax.xml.XMLConstants;
 import javax.xml.bind.JAXBException;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -33,27 +32,41 @@ public class DOMPars {
 
     public static void main(String[] args) {
         DOMPars pars = new DOMPars(args[0]);
-        pars.parse(pars.nameInputFile);
+        pars.parse();
         System.out.println("BEFORE SOORt" + pars.reserve.getGemList());
 
         Collections.sort(pars.reserve.getGemList(), Sorter.SORT_GEM_BY_NAME);
         Save save = new Save();
         System.out.println("AFTER SORT" + pars.reserve.getGemList());
         try {
-            save.saveToXML(pars.reserve, "output.dom.xml");
+            System.out.println(save.saveToXML(pars.reserve, "output.dom.xml"));
         } catch (JAXBException e) {
             pars.logger.log(Level.WARNING, e.getMessage());
         }
 
     }
 
-    public void parse(String nameFile) {
-
-        File file = new File(nameFile);
+    public String parse() {
+        String FEATURE = null;
+        String parsingGems = null;
+        File file = new File(nameInputFile);
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-        factory.setAttribute(XMLConstants.FEATURE_SECURE_PROCESSING, true);
-        factory.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
-        factory.setAttribute(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
+        FEATURE = "http://apache.org/xml/features/disallow-doctype-decl";
+        try {
+            factory.setFeature(FEATURE, true);
+            FEATURE = "http://xml.org/sax/features/external-general-entities";
+            factory.setFeature(FEATURE, false);
+
+            FEATURE = "http://xml.org/sax/features/external-parameter-entities";
+            factory.setFeature(FEATURE, false);
+
+            FEATURE = "http://apache.org/xml/features/nonvalidating/load-external-dtd";
+            factory.setFeature(FEATURE, false);
+        } catch (ParserConfigurationException e) {
+            logger.log(Level.WARNING, e.getMessage());
+        }
+
+
         reserve = new Reserve();
         try {
             DocumentBuilder builder = factory.newDocumentBuilder();
@@ -74,9 +87,10 @@ public class DOMPars {
                     reserve.getGemList().add(gem);
                 }
             }
-            System.out.println(reserve.getGemList());
+            parsingGems = reserve.getGemList().toString();
         } catch (ParserConfigurationException | SAXException | IOException e) {
             logger.log(Level.WARNING, e.getMessage());
         }
+        return parsingGems;
     }
 }

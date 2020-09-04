@@ -9,6 +9,7 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
+import javax.xml.XMLConstants;
 import javax.xml.bind.JAXBException;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
@@ -29,19 +30,14 @@ public class SAXPars extends DefaultHandler {
 
     public static void main(String[] args) {
         SAXPars saxPars = new SAXPars(args[0]);
-        try {
-            saxPars.parse();
-        } catch (ParserConfigurationException | SAXException | IOException e) {
-            saxPars.logger.log(Level.WARNING, e.getMessage());
-        }
-
+        saxPars.parse();
         System.out.println("BEFORE SORT" + saxPars.getReserve().getGemList().toString());
         Collections.sort(saxPars.getReserve().getGemList(), Sorter.SORT_GEM_BY_COUNT_OF_FACES);
         System.out.println("AFTER SORT" + saxPars.getReserve().getGemList());
         try {
             Save save = new Save();
 
-            save.saveToXML(saxPars.reserve, "output.sax.xml");
+            System.out.println(save.saveToXML(saxPars.reserve, "output.sax.xml"));
         } catch (JAXBException e) {
             saxPars.logger.log(Level.WARNING, e.getMessage());
         }
@@ -52,16 +48,18 @@ public class SAXPars extends DefaultHandler {
         return reserve;
     }
 
-    public void parse() throws ParserConfigurationException, SAXException, IOException {
+    public String parse() {
         SAXParserFactory factory = SAXParserFactory.newInstance();
-        factory.setFeature("http://xml.org/sax/features/external-general-entities", false);
-        factory.setFeature("http://xml.org/sax/features/external-parameter-entities", false);
-        factory.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
-        // XML document contains namespaces
-        factory.setNamespaceAware(true);
-        // set validation
-        SAXParser parser = factory.newSAXParser();
-        parser.parse(nameInputFile, this);
+        try {
+            factory.setNamespaceAware(true);
+            SAXParser parser = factory.newSAXParser();
+            parser.setProperty(XMLConstants.ACCESS_EXTERNAL_DTD, ""); // Compliant
+            parser.setProperty(XMLConstants.ACCESS_EXTERNAL_SCHEMA, ""); // compliant
+            parser.parse(nameInputFile, this);
+        } catch (ParserConfigurationException | SAXException | IOException e) {
+            logger.log(Level.WARNING, e.getMessage());
+        }
+        return reserve.getGemList().toString();
     }
 
 
@@ -105,7 +103,7 @@ public class SAXPars extends DefaultHandler {
     }
 
     @Override
-    public void characters(char ch[], int start, int length) {
+    public void characters(char[] ch, int start, int length) {
         int visualParametersCountOfFacesGem;
 
         if (name) {

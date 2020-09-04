@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<reserve>
+    <gem>
+        <nameGem>Izumrud</nameGem>
+        <origin>Tatuin</origin>
+        <visualParameters>
+            <color>Green</color>
+            <countOfFaces>5</countOfFaces>
+        </visualParameters>
+    </gem>
+    <gem>
+        <nameGem>Zhemchug</nameGem>
+        <origin>Korusant</origin>
+        <visualParameters>
+            <color>Yellow</color>
+            <countOfFaces>8</countOfFaces>
+        </visualParameters>
+    </gem>
+    <gem>
+        <nameGem>Almaz</nameGem>
+        <origin>Konoha</origin>
+        <visualParameters>
+            <color>Blue</color>
+            <countOfFaces>6</countOfFaces>
+        </visualParameters>
+    </gem>
+</reserve>

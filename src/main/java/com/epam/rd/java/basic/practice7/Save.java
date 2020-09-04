@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 public class Save {
     private final Logger logger = Logger.getLogger(Save.class.getName());
 
-    public void saveToXML(Reserve reserve, String nameFile)
+    public String saveToXML(Reserve reserve, String nameFile)
             throws JAXBException {
         // Test -> DOM -> XML
         // create an instance of `JAXBContext`
@@ -33,7 +33,7 @@ public class Save {
         marshaller.marshal(reserve, sw);
         inputInFile(sw, nameFile);
         // print the XML
-        System.out.println(sw.toString());
+        return sw.toString();
     }
 
     private void inputInFile(StringWriter stringWriter, String nameFile) {

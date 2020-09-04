@@ -129,6 +129,6 @@ public class Gem {
                 "nameGem='" + nameGem + '\'' +
                 ", origin='" + origin + '\'' +
                 ", visualParameters=" + visualParameters +
-                '}';
+                '}' + '\n';
     }
 }

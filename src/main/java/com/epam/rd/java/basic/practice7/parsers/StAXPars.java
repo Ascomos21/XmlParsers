@@ -35,7 +35,7 @@ public class StAXPars {
         System.out.println("AFTER SORT" + stAXPars.reserve.getGemList());
         Save save = new Save();
         try {
-            save.saveToXML(stAXPars.reserve, "output.stax.xml");
+            System.out.println(save.saveToXML(stAXPars.reserve, "output.stax.xml"));
         } catch (JAXBException e) {
             stAXPars.logger.log(Level.WARNING, e.getMessage());
         }
@@ -45,7 +45,7 @@ public class StAXPars {
         this.nameInputFile = nameInputFile;
     }
 
-    public void parse() {
+    public String parse() {
         reserve = new Reserve();
         try {
             XMLInputFactory factory = XMLInputFactory.newInstance();
@@ -87,5 +87,6 @@ public class StAXPars {
         } catch (FileNotFoundException | XMLStreamException e) {
             logger.log(Level.WARNING, e.getMessage());
         }
+        return reserve.getGemList().toString();
     }
 }
