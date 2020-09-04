@@ -47,21 +47,21 @@ public class DOMPars {
     }
 
     public String parse() {
-        String FEATURE = null;
+        String feature;
         String parsingGems = null;
         File file = new File(nameInputFile);
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-        FEATURE = "http://apache.org/xml/features/disallow-doctype-decl";
+        feature = "http://apache.org/xml/features/disallow-doctype-decl";
         try {
-            factory.setFeature(FEATURE, true);
-            FEATURE = "http://xml.org/sax/features/external-general-entities";
-            factory.setFeature(FEATURE, false);
+            factory.setFeature(feature, true);
+            feature = "http://xml.org/sax/features/external-general-entities";
+            factory.setFeature(feature, false);
 
-            FEATURE = "http://xml.org/sax/features/external-parameter-entities";
-            factory.setFeature(FEATURE, false);
+            feature = "http://xml.org/sax/features/external-parameter-entities";
+            factory.setFeature(feature, false);
 
-            FEATURE = "http://apache.org/xml/features/nonvalidating/load-external-dtd";
-            factory.setFeature(FEATURE, false);
+            feature = "http://apache.org/xml/features/nonvalidating/load-external-dtd";
+            factory.setFeature(feature, false);
         } catch (ParserConfigurationException e) {
             logger.log(Level.WARNING, e.getMessage());
         }
