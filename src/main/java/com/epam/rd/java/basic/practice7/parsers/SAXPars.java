@@ -23,6 +23,7 @@ public class SAXPars extends DefaultHandler {
     private final Logger logger = Logger.getLogger(SAXPars.class.getName());
     private Reserve reserve;
     String nameInputFile;
+
     public SAXPars(String nameInputFile) {
         this.nameInputFile = nameInputFile;
     }
@@ -109,7 +110,14 @@ public class SAXPars extends DefaultHandler {
         if (visualParametersCountOfFaces) {
             visualParametersCountOfFacesGem = Integer.parseInt(new String(ch, start, length));
             visualParametersCountOfFaces = false;
-            reserve.getGemList().add(new Gem(nameGem, originGem, new VisualParameters(visualParametersColorGem, visualParametersCountOfFacesGem)));
+            Gem gem = new Gem();
+            gem.setNameGem(nameGem);
+            gem.setOrigin(originGem);
+            VisualParameters visualParameters = new VisualParameters();
+            visualParameters.setCountOfFaces(visualParametersCountOfFacesGem);
+            visualParameters.setColor(visualParametersColorGem);
+            gem.setVisualParameters(visualParameters);
+            reserve.getGemList().add(gem);
         }
     }
 }

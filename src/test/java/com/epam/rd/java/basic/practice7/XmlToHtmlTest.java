@@ -3,6 +3,7 @@ package com.epam.rd.java.basic.practice7;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -21,6 +22,8 @@ public class XmlToHtmlTest {
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
+        File file = new File("report.html");
+        file.delete();
         Assert.assertEquals("<html>\n" +
                 "<body>\n" +
                 "<h1>Test Case Results</h1>\n" +
@@ -40,5 +43,6 @@ public class XmlToHtmlTest {
                 "</table>\n" +
                 "</body>\n" +
                 "</html>\n", stringBuilder.toString());
+
     }
 }
