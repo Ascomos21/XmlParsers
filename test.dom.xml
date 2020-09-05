@@ -1,5 +1,13 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <reserve>
+    <gem>
+        <nameGem>Diamond</nameGem>
+        <origin>Tatuin</origin>
+        <visualParameters>
+            <color>Yellow</color>
+            <countOfFaces>6</countOfFaces>
+        </visualParameters>
+    </gem>
     <gem>
         <nameGem>Izumrud</nameGem>
         <origin>Mandalor</origin>
@@ -14,14 +22,6 @@
         <visualParameters>
             <color>Yellow</color>
             <countOfFaces>5</countOfFaces>
-        </visualParameters>
-    </gem>
-    <gem>
-        <nameGem>Diamond</nameGem>
-        <origin>Tatuin</origin>
-        <visualParameters>
-            <color>Yellow</color>
-            <countOfFaces>6</countOfFaces>
         </visualParameters>
     </gem>
 </reserve>

@@ -20,31 +20,35 @@ import java.util.logging.Logger;
 
 public class StAXPars {
     private final Logger logger = Logger.getLogger(StAXPars.class.getName());
-    private Reserve reserve;
+    Reserve reserve;
     private String nameGem;
     private String origin;
     private String color;
-    private int countOfFaces;
     private String nameInputFile;
 
     public static void main(String[] args) {
-        informationToXml(args[0]);
+        informationToXml(args[0], "output.stax.xml");
     }
 
-    public static String informationToXml(String nameFile) {
-        StAXPars stAXPars = new StAXPars(nameFile);
-        stAXPars.parse();
-        String result = "";
-        System.out.println("BEFORE SORT" + stAXPars.reserve.getGemList());
-        Collections.sort(stAXPars.reserve.getGemList(), Sorter.SORT_GEM_BY_ORIGIN);
-        System.out.println("AFTER SORT" + stAXPars.reserve.getGemList());
+    public static String informationToXml(String nameFile, String nameOutputFile) {
+        String output = "";
+        StAXPars stAXPars = createParser(nameFile);
         Save save = new Save();
         try {
-            result = save.saveToXML(stAXPars.reserve, "output.stax.xml");
+            output = save.saveToXML(stAXPars.reserve, nameOutputFile);
         } catch (JAXBException e) {
             stAXPars.logger.log(Level.WARNING, e.getMessage());
         }
-        return result;
+        return output;
+    }
+
+    public static StAXPars createParser(String nameFile) {
+        StAXPars stAXPars = new StAXPars(nameFile);
+        stAXPars.parse();
+        System.out.println("BEFORE SORT" + stAXPars.reserve.getGemList());
+        Collections.sort(stAXPars.reserve.getGemList(), Sorter.SORT_GEM_BY_ORIGIN);
+        System.out.println("AFTER SORT" + stAXPars.reserve.getGemList());
+        return stAXPars;
     }
 
     public StAXPars(String nameInputFile) {
@@ -52,6 +56,7 @@ public class StAXPars {
     }
 
     public String parse() {
+        int countOfFaces;
         reserve = new Reserve();
         try {
             XMLInputFactory factory = XMLInputFactory.newInstance();
@@ -86,7 +91,6 @@ public class StAXPars {
                             // will NOT execute because of the line preceding the switch.
                     }
                 }
-
             }
             System.out.println(reserve.getGemList().toString());
 

@@ -10,6 +10,8 @@ public class Main {
         SAXPars.main(new String[]{args[0]});
         DOMPars.main(new String[]{args[0]});
         StAXPars.main(new String[]{args[0]});
+        XmlToHtml xmlToHtml = new XmlToHtml();
+        xmlToHtml.convert();
     }
 
 }

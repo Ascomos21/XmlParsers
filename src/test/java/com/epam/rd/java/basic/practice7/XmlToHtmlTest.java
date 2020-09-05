@@ -8,6 +8,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class XmlToHtmlTest {
+
     @Test
     public void testConvert() {
         XmlToHtml xmlToHtml = new XmlToHtml();
@@ -45,4 +46,5 @@ public class XmlToHtmlTest {
                 "</html>\n", stringBuilder.toString());
 
     }
+
 }

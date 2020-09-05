@@ -14,11 +14,6 @@ import java.util.logging.Logger;
 public class XmlToHtml {
     Logger logger = Logger.getLogger(XmlToHtml.class.getName());
 
-    public static void main(String[] args) {
-        XmlToHtml xmlToHtml = new XmlToHtml();
-        xmlToHtml.convert();
-    }
-
     public void convert() {
         String outputFileName = "report.html";
         try (OutputStream htmlFile = new FileOutputStream(outputFileName);) {

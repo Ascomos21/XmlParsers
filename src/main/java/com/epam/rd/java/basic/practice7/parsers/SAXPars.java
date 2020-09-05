@@ -29,21 +29,21 @@ public class SAXPars extends DefaultHandler {
     }
 
     public static void main(String[] args) {
-        System.out.println(informationInXml(args[0]));
+        informationInXml(args[0], "output.sax.xml");
     }
 
-    public static String informationInXml(String nameFile) {
-        String result = "";
+    public static String informationInXml(String nameFile, String nameOutputFile) {
+        String output = "";
         SAXPars saxPars = new SAXPars(nameFile);
         saxPars.parse();
         Collections.sort(saxPars.reserve.getGemList(), Sorter.SORT_GEM_BY_COUNT_OF_FACES);
         try {
             Save save = new Save();
-            result = save.saveToXML(saxPars.reserve, "output.sax.xml");
+            output = save.saveToXML(saxPars.reserve, nameOutputFile);
         } catch (JAXBException e) {
             saxPars.logger.log(Level.WARNING, e.getMessage());
         }
-        return result;
+        return output;
     }
 
     public String parse() {
@@ -94,7 +94,6 @@ public class SAXPars extends DefaultHandler {
     @Override
     public void characters(char[] ch, int start, int length) {
         int visualParametersCountOfFacesGem;
-
         if (name) {
             nameGem = new String(ch, start, length);
             name = false;

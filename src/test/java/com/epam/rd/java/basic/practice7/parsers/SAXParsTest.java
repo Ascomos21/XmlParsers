@@ -1,4 +1,4 @@
-package com.epam.rd.java.basic.practice7;
+package com.epam.rd.java.basic.practice7.parsers;
 
 import com.epam.rd.java.basic.practice7.parsers.SAXPars;
 import org.junit.Assert;
@@ -29,8 +29,8 @@ public class SAXParsTest {
     }
 
     @Test
-    public void checkSave() {
-        String inform = SAXPars.informationInXml("input.xml");
+    public void testInputInformation(){
+        String output = SAXPars.informationInXml("input.xml", "test.sax.xml");
         Assert.assertEquals("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n" +
                 "<reserve>\n" +
                 "    <gem>\n" +
@@ -57,7 +57,7 @@ public class SAXParsTest {
                 "            <countOfFaces>8</countOfFaces>\n" +
                 "        </visualParameters>\n" +
                 "    </gem>\n" +
-                "</reserve>\n", inform);
-
+                "</reserve>\n", output);
     }
+
 }
