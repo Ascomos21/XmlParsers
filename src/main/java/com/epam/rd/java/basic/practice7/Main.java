@@ -7,11 +7,9 @@ import com.epam.rd.java.basic.practice7.parsers.StAXPars;
 
 public class Main {
     public static void main(String[] args) {
-        SAXPars.main(new String[]{args[0]});
-        DOMPars.main(new String[]{args[0]});
-        StAXPars.main(new String[]{args[0]});
-        XmlToHtml xmlToHtml = new XmlToHtml();
-        xmlToHtml.convert();
+        SAXPars.main(new String[]{args[0],"output.sax.xml"});
+        DOMPars.main(new String[]{args[0],"output.dom.xml"});
+        StAXPars.main(new String[]{args[0],"output.stax.xml"});
     }
 
 }

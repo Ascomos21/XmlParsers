@@ -29,7 +29,7 @@ public class SAXPars extends DefaultHandler {
     }
 
     public static void main(String[] args) {
-        informationInXml(args[0], "output.sax.xml");
+        System.out.print(informationInXml(args[0], args[1]));
     }
 
     public static String informationInXml(String nameFile, String nameOutputFile) {

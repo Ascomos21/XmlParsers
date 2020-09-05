@@ -32,7 +32,7 @@ public class DOMPars {
     }
 
     public static void main(String[] args) {
-        System.out.println(informationToXml(args[0],"output.dom.xml"));
+        System.out.print(informationToXml(args[0],args[1]));
     }
 
     public static String informationToXml(String nameInputFile, String nameOutputFile) {

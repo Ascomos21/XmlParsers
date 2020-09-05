@@ -27,7 +27,7 @@ public class StAXPars {
     private String nameInputFile;
 
     public static void main(String[] args) {
-        informationToXml(args[0], "output.stax.xml");
+        System.out.print(informationToXml(args[0], args[1]));
     }
 
     public static String informationToXml(String nameFile, String nameOutputFile) {
